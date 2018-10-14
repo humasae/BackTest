@@ -10,7 +10,11 @@ Prueba de proyecto back-end
 - desde POSTMAN realizar las siguientes llamadas:
 
 
+### Obtener todas las asignaturas (GET)
+http://localhost:61406/api/subject
 
+### Obtener una asignatura por ID (GET)
+http://localhost:61406/api/subject/1
 
 ### Crear una asignatura (POST)
 http://localhost:61406/api/subject/
@@ -20,10 +24,24 @@ http://localhost:61406/api/subject/
 	"Id": "1",
 	"Name": "primera asignatura",
 	"Professor": "nombre del profesor",
-	"RoomNumber": "12""StudentId": "1"
+	"RoomNumber": "12"
 }
 ```
 
+### Borrar una asignatura (DELETE)
+http://localhost:61406/api/subject/2
+
+
+### modificar un estudiante (PUT)
+http://localhost:61406/api/subject/1
+```
+{
+	"Id": "1",
+	"Name": "asignatura cambiada",
+	"Professor": "nombre del profesor",
+	"RoomNumber": "12"
+}
+```
 
 
 ### Obtener todos los estudiantes (GET)
@@ -40,7 +58,8 @@ http://localhost:61406/api/student
 	"Id": "1",
 	"LastName": "apellido1 apellido 2",
 	"FirstName": "nombre",
-	"City": "ciudad"
+	"City": "ciudad",
+	"SubjectId": "3"
 }
 ```
 
@@ -49,12 +68,13 @@ http://localhost:61406/api/student/2
 
 
 ### modificar un estudiante (PUT)
-http://localhost:61406/api/student
+http://localhost:61406/api/student/1
 ```
 {
 	"Id": "1",
 	"LastName": "apellidos  cambiados",
 	"FirstName": "nombre modificado",
-	"City": "otra ciudad"
+	"City": "otra ciudad",
+	"SubjectId": "3"
 }
 ```
