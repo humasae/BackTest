@@ -15,12 +15,12 @@ namespace WebApiTest
         {
             var unityContainer = new UnityContainer();
 
-            // Configuración y servicios de API web
+            // Web API configuration and services
             var container = new UnityContainer();
             container.RegisterType<IStudentRepository, StudentRepository>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
 
-            // Rutas de API web
+            // Web API routes 
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -29,8 +29,10 @@ namespace WebApiTest
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            // Filter to set basic authentication 
             config.Filters.Add(new BasicAuthenticationAttribute());
 
+            //  create context and create DataBase if not exists
             var context = new WebApiTestContext();
             context.Database.CreateIfNotExists();
         }

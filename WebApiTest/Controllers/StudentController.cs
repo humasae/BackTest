@@ -38,13 +38,43 @@ namespace WebApiTest.Controllers
 
         public IHttpActionResult Post(Student student)
         {
-            var a = student;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             _repository.Add(student);
             return CreatedAtRoute("DefaultApi", new { id = student.Id }, student);
+        }
+
+        public IHttpActionResult Put(Student newStudent)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var oldStudent = _repository.GetByID(newStudent.Id);
+            if (oldStudent == null)
+            {
+                return NotFound();
+            }
+
+            _repository.Update(newStudent);
+            return CreatedAtRoute("DefaultApi", new { id = newStudent.Id }, newStudent);
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            var student = _repository.GetByID(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            _repository.Delete(student);
+
+            return Ok();
+
         }
     }
 }

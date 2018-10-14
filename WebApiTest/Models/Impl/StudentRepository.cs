@@ -28,6 +28,28 @@ namespace WebApiTest.Models.Impl
             db.SaveChanges();
         }
 
+        public void Delete(Student student)
+        {
+            db.Students.Remove(student);
+            db.SaveChanges();
+        }
+
+        public void Update(Student student)
+        {
+            //var oldStudent = GetByID(student.Id);
+            using (db)
+            {
+                var oldStudent = db.Students.FirstOrDefault(s => s.Id == student.Id);
+
+                oldStudent.LastName = student.LastName;
+                oldStudent.FirstName = student.FirstName;
+                oldStudent.City = student.City;
+
+                db.SaveChanges();
+            }
+                
+        }
+
         protected void Dispose(bool disposing)
         {
             if (disposing)

@@ -10,5 +10,9 @@ namespace WebApiTest.Models.Interfaces
         Student GetByID(int id);
 
         void Add(Student student);
+
+        void Delete(Student student);
+
+        void Update(Student student);
     }
 }
