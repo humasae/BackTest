@@ -118,15 +118,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Filters\BasicAuthenticationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\Impl\StudentRepository.cs" />
+    <Compile Include="Models\Interfaces\IStudentRepository.cs" />
+    <Compile Include="Models\Classes\Student.cs" />
+    <Compile Include="Models\Classes\Subject.cs" />
     <Compile Include="Models\WebApiTestContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resolver\UnityResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -139,7 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Interfaces\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

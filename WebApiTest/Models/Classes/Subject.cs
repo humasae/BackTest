@@ -1,4 +1,4 @@
-﻿namespace WebApiTest.Models
+﻿namespace WebApiTest.Models.Classes
 {
     public class Subject
     {

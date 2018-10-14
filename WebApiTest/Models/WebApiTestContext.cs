@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using WebApiTest.Models.Classes;
 
 namespace WebApiTest.Models
 {

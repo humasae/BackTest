@@ -24,7 +24,7 @@ namespace WebApiTest.Filters
                 var password = usernamePasswordArray[1];
 
                 // Replace this with your own system of security / means of validating credentials
-                var isValid = userName == "andy" && password == "password";
+                var isValid = userName == "testbackend" && password == "123456";
 
                 if (isValid)
                 {
