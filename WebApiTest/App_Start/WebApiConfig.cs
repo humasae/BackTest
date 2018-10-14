@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+using Unity;
 using WebApiTest.Filters;
+using WebApiTest.Models;
 
 namespace WebApiTest
 {
@@ -10,6 +9,8 @@ namespace WebApiTest
     {
         public static void Register(HttpConfiguration config)
         {
+            var unityContainer = new UnityContainer();
+
             // Configuración y servicios de API web
 
             // Rutas de API web
@@ -22,6 +23,9 @@ namespace WebApiTest
             );
 
             config.Filters.Add(new BasicAuthenticationAttribute());
+
+            var context = new WebApiTestContext();
+            context.Database.CreateIfNotExists();
         }
     }
 }
