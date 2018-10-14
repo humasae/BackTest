@@ -13,15 +13,11 @@ namespace WebApiTest.Controllers
     public class SubjectController : ApiController
     {
         ISubjectRepository _subjectRepository;
-        IStudentRepository _studentRepository;
 
-        public SubjectController(ISubjectRepository subjectRepository, IStudentRepository studentRepository)
+        public SubjectController(ISubjectRepository subjectRepository)
         {
             _subjectRepository = subjectRepository;
-            _studentRepository = studentRepository;
         }
-
-        
 
         // GET api/subject 
         public IEnumerable<Subject> Get()
@@ -46,15 +42,6 @@ namespace WebApiTest.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            /*var student = _studentRepository.GetByID(subject.StudentId);
-
-            if(student == null)
-            {
-                return NotFound();
-            }*/
-
-            //subject.Student = student;
 
             _subjectRepository.Add(subject);
             return CreatedAtRoute("DefaultApi", new { id = subject.Id }, subject);
