@@ -6,42 +6,43 @@ using WebApiTest.Models.Interfaces;
 
 namespace WebApiTest.Models.Impl
 {
-    public class StudentRepository : IStudentRepository
+    public class SubjectRepository : ISubjectRepository
     {
         private WebApiTestContext db = new WebApiTestContext();
 
 
-        public IEnumerable<Student> GetAll()
+        public IEnumerable<Subject> GetAll()
         {
-            return db.Students;
+            return db.Subjects;
         }
 
-        public Student GetByID(int id)
+        public Subject GetByID(int id)
         {
-            return db.Students.FirstOrDefault(s => s.Id == id);
+            return db.Subjects.FirstOrDefault(s => s.Id == id);
         }
 
-        public void Add(Student student)
+        public void Add(Subject subject)
         {
-            db.Students.Add(student);
+            db.Subjects.Add(subject);
             db.SaveChanges();
         }
 
-        public void Delete(Student student)
+        public void Delete(Subject subject)
         {
-            db.Students.Remove(student);
+            db.Subjects.Remove(subject);
             db.SaveChanges();
         }
 
-        public void Update(Student student)
+        public void Update(Subject subject)
         {
             using (db)
             {
-                var oldStudent = db.Students.FirstOrDefault(s => s.Id == student.Id);
+                var oldSubject = db.Subjects.FirstOrDefault(s => s.Id == subject.Id);
 
-                oldStudent.LastName = student.LastName;
-                oldStudent.FirstName = student.FirstName;
-                oldStudent.City = student.City;
+                oldSubject.Name = subject.Name;
+                oldSubject.Professor = subject.Professor;
+                oldSubject.RoomNumber = subject.RoomNumber;
+                oldSubject.Student = subject.Student;
 
                 db.SaveChanges();
             }

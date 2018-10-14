@@ -118,13 +118,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Filters\BasicAuthenticationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Impl\SubjectRepository.cs" />
     <Compile Include="Models\Impl\StudentRepository.cs" />
+    <Compile Include="Models\Interfaces\ISubjectRepository.cs" />
     <Compile Include="Models\Interfaces\IStudentRepository.cs" />
     <Compile Include="Models\Classes\Student.cs" />
     <Compile Include="Models\Classes\Subject.cs" />

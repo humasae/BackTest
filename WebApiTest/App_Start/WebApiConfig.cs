@@ -18,6 +18,7 @@ namespace WebApiTest
             // Web API configuration and services
             var container = new UnityContainer();
             container.RegisterType<IStudentRepository, StudentRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ISubjectRepository, SubjectRepository>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
 
             // Web API routes 
