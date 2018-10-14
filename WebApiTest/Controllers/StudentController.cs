@@ -60,7 +60,7 @@ namespace WebApiTest.Controllers
             }
 
             _repository.Update(newStudent);
-            return CreatedAtRoute("DefaultApi", new { id = newStudent.Id }, newStudent);
+            return Ok(new { id = newStudent.Id });
         }
 
         public IHttpActionResult Delete(int id)
