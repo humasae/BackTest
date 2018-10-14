@@ -21,19 +21,19 @@ namespace WebApiTest.Models.Impl
             return db.Students.FirstOrDefault(s => s.Id == id);
         }
 
-        public void Add(Student student)
+        public bool Add(Student student)
         {
             db.Students.Add(student);
-            db.SaveChanges();
+            return (db.SaveChanges() >= 0);
         }
 
-        public void Delete(Student student)
+        public bool Delete(Student student)
         {
             db.Students.Remove(student);
-            db.SaveChanges();
+            return (db.SaveChanges() >= 0);
         }
 
-        public void Update(Student student)
+        public bool Update(Student student)
         {
             using (db)
             {
@@ -42,8 +42,9 @@ namespace WebApiTest.Models.Impl
                 oldStudent.LastName = student.LastName;
                 oldStudent.FirstName = student.FirstName;
                 oldStudent.City = student.City;
+                oldStudent.SubjectId = student.SubjectId;
 
-                db.SaveChanges();
+                return (db.SaveChanges() >= 0);
             }
         }
 

@@ -42,7 +42,6 @@ namespace WebApiTest.Models.Impl
                 oldSubject.Name = subject.Name;
                 oldSubject.Professor = subject.Professor;
                 oldSubject.RoomNumber = subject.RoomNumber;
-                oldSubject.Student = subject.Student;
 
                 db.SaveChanges();
             }

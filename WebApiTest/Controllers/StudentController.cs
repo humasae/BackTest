@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using WebApiTest.Filters;
 using WebApiTest.Models.Classes;
@@ -42,25 +43,40 @@ namespace WebApiTest.Controllers
             {
                 return BadRequest(ModelState);
             }
-            _repository.Add(student);
+
+            if (!_repository.Add(student))
+            {
+                throw new Exception($"Adding student failed on save.");
+            }
+
             return CreatedAtRoute("DefaultApi", new { id = student.Id }, student);
         }
 
-        public IHttpActionResult Put(Student newStudent)
+        [HttpPut]
+        public IHttpActionResult Put(int id, [FromBody] Student newStudent)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var oldStudent = _repository.GetByID(newStudent.Id);
+            if(id != newStudent.Id)
+            {
+                return BadRequest();
+            }
+
+            var oldStudent = _repository.GetByID(id);
             if (oldStudent == null)
             {
                 return NotFound();
             }
 
-            _repository.Update(newStudent);
-            return Ok(new { id = newStudent.Id });
+            if (!_repository.Update(newStudent))
+            {
+                throw new Exception($"Updating student {newStudent.Id} failed on save.");
+            }
+
+            return Ok(newStudent);
         }
 
         public IHttpActionResult Delete(int id)
@@ -71,7 +87,10 @@ namespace WebApiTest.Controllers
                 return NotFound();
             }
 
-            _repository.Delete(student);
+            if (!_repository.Delete(student))
+            {
+                throw new Exception($"Deleting student {student.Id} failed on save.");
+            }
 
             return Ok();
 

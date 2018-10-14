@@ -7,7 +7,24 @@ Prueba de proyecto back-end
 - compilar la  solución
 - en laspropiedades del proyecto **WebApiTest** estableccer la URL como: http://localhost:61406/
 - ejecutar la solución (se despliega en IIS Express)
-- desde POSTMAN rrealizar las siguientes llamadas:
+- desde POSTMAN realizar las siguientes llamadas:
+
+
+
+
+### Crear una asignatura (POST)
+http://localhost:61406/api/subject/
+
+```
+{
+	"Id": "1",
+	"Name": "primera asignatura",
+	"Professor": "nombre del profesor",
+	"RoomNumber": "12""StudentId": "1"
+}
+```
+
+
 
 ### Obtener todos los estudiantes (GET)
 http://localhost:61406/api/student

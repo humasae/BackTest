@@ -47,14 +47,14 @@ namespace WebApiTest.Controllers
                 return BadRequest(ModelState);
             }
 
-            var student = _studentRepository.GetByID(subject.Student.Id);
+            /*var student = _studentRepository.GetByID(subject.StudentId);
 
             if(student == null)
             {
                 return NotFound();
-            }
+            }*/
 
-            subject.Student = student;
+            //subject.Student = student;
 
             _subjectRepository.Add(subject);
             return CreatedAtRoute("DefaultApi", new { id = subject.Id }, subject);
