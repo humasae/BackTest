@@ -9,6 +9,7 @@ Prueba de proyecto back-end
 - ejecutar la solución (se despliega en IIS Express)
 - desde POSTMAN realizar las siguientes llamadas:
 
+## ASIGNATURAS
 
 ### Obtener todas las asignaturas (GET)
 http://localhost:61406/api/subject
@@ -32,7 +33,7 @@ http://localhost:61406/api/subject/
 http://localhost:61406/api/subject/2
 
 
-### modificar un estudiante (PUT)
+### modificar una asignatura (PUT)
 http://localhost:61406/api/subject/1
 ```
 {
@@ -43,6 +44,7 @@ http://localhost:61406/api/subject/1
 }
 ```
 
+## ESTUDIANTES
 
 ### Obtener todos los estudiantes (GET)
 http://localhost:61406/api/student
