@@ -47,11 +47,17 @@ namespace WebApiTest.Controllers
             return CreatedAtRoute("DefaultApi", new { id = subject.Id }, subject);
         }
 
-        public IHttpActionResult Put(Subject newSubject)
+        [HttpPut]
+        public IHttpActionResult Put(int id, [FromBody] Subject newSubject)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            if (id != newSubject.Id)
+            {
+                return BadRequest();
             }
 
             var oldSubject = _subjectRepository.GetByID(newSubject.Id);
