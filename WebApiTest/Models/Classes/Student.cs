@@ -18,7 +18,7 @@ namespace WebApiTest.Models.Classes
         public string City { get; set; }
 
         [ForeignKey("SubjectId")]
-        public Subject Subject { get; set; }
+        public virtual Subject Subject { get; set; }
 
         public int SubjectId { get; set; }
     }

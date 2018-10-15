@@ -17,7 +17,7 @@ namespace WebApiTest.Models.Classes
 
         public int RoomNumber { get; set; }
 
-        public ICollection<Student> Students { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
 
     }
 }
