@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Web.Http;
 using WebApiTest.Filters;
@@ -21,9 +22,12 @@ namespace WebApiTest.Controllers
         }
 
         // GET api/student 
-        public IEnumerable<Student> Get()
+        public IEnumerable<StudentResponse> Get()
         {
-            return _repository.GetAll();
+            var students = _repository.GetAll();
+            var response = Mapper.Map<IEnumerable<Student>,IEnumerable<StudentResponse>>(students);
+
+            return response;
         }
 
         // GET api/student/5  
@@ -34,7 +38,10 @@ namespace WebApiTest.Controllers
             {
                 return NotFound();
             }
-            return Ok(student);
+
+            var response = Mapper.Map<Student, StudentResponse>(student);
+
+            return Ok(response);
         }
 
         public IHttpActionResult Post(Student student)

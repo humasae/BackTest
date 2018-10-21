@@ -21,5 +21,10 @@ namespace WebApiTest.Models.Classes
         public virtual Subject Subject { get; set; }
 
         public int SubjectId { get; set; }
+
+        public override string ToString()
+        {
+            return LastName + ", " + FirstName + " from " + City;
+        }
     }
 }

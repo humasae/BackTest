@@ -19,5 +19,15 @@ namespace WebApiTest.Models.Classes
 
         public virtual ICollection<Student> Students { get; set; }
 
+        public string ToText()
+        {
+            return Name + " - " + Professor;
+        }
+
+        public override string ToString()
+        {
+            return Name + " - " + Professor;
+        }
+
     }
 }

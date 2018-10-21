@@ -3,6 +3,7 @@ using Unity;
 using Unity.Lifetime;
 using WebApiTest.Filters;
 using WebApiTest.Models;
+using WebApiTest.Models.Classes;
 using WebApiTest.Models.Impl;
 using WebApiTest.Models.Interfaces;
 using WebApiTest.Resolver;
@@ -36,6 +37,13 @@ namespace WebApiTest
             //  create context and create DataBase if not exists
             var context = new WebApiTestContext();
             context.Database.CreateIfNotExists();
+
+            AutoMapper.Mapper.Initialize(cfg =>
+                {
+                    cfg.CreateMap<Student, StudentResponse>();
+                    cfg.CreateMap<Subject, SubjectResponse>();
+                }
+            );
         }
     }
 }

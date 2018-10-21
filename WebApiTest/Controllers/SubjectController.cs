@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System.Collections.Generic;
 using System.Web.Http;
 using WebApiTest.Filters;
 using WebApiTest.Models.Classes;
@@ -20,9 +21,12 @@ namespace WebApiTest.Controllers
         }
 
         // GET api/subject 
-        public IEnumerable<Subject> Get()
+        public IEnumerable<SubjectResponse> Get()
         {
-            return _subjectRepository.GetAll();
+            var subjects = _subjectRepository.GetAll();
+            var response = Mapper.Map<IEnumerable<Subject>, IEnumerable<SubjectResponse>>(subjects);
+            return response;
+
         }
 
         // GET api/subject/5  
